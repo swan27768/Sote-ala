@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="sote_ala" startnode="1" creator="Twine" creator-version="2.11.1" format="SugarCube" format-version="2.37.3" ifid="d5671657-2773-4767-b3e2-4070ae918762" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* ============================================================
+	<tw-storydata name="sote_ala" startnode="75" creator="Twine" creator-version="2.11.1" format="SugarCube" format-version="2.37.3" ifid="d5671657-2773-4767-b3e2-4070ae918762" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* ============================================================
    1. PERUSTYYLIT – TAUSTA, FONTIT, RESET
    ============================================================ */
 
@@ -677,6 +677,146 @@ a:active {
         text-align: center;
     }
 }
+/* Ammattitutkimuksen tekstikentät */
+
+textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.5;
+
+    padding: 0.8em 1em;
+    border-radius: 10px;
+    border: 2px solid #cbd5d9;
+
+    resize: vertical;   /* käyttäjä voi itse suurentaa */
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #1f5f7a;
+    box-shadow: 0 0 0 2px rgba(31,95,122,0.15);
+}
+/* ===============================
+   YHTEENVETO – VIHKO / NOTEBOOK
+   =============================== */
+
+.notebook {
+    background: #fffdf7;
+    border-radius: 16px;
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.08),
+        0 3px 6px rgba(0,0,0,0.05);
+}
+
+.notebook-intro {
+    text-align: center;
+    font-size: 1.05em;
+    color: #445a63;
+    margin-bottom: 1.5em;
+}
+
+/* Yksittäinen “vihkon sivu” */
+.note {
+    background: #ffffff;
+    border-left: 6px solid #1f5f7a;
+    padding: 1em 1.4em;
+    margin: 1em 0;
+    border-radius: 10px;
+}
+
+.note h3 {
+    margin-top: 0;
+    margin-bottom: 0.4em;
+    font-size: 1.1em;
+    color: #1f5f7a;
+}
+
+.note p {
+    margin: 0;
+    white-space: pre-wrap; /* säilyttää rivinvaihdot */
+}
+.highlight {
+    background-color: #e6f4ea;   /* pehmeä vihreä */
+    color: #1f5f3a;              /* tumma vihreä teksti */
+    padding: 1em 1.2em;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.feedback-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1.5em;
+}
+
+/* Koko sivu klikattava ilman linkkityyliä */
+a.link-internal,
+a.link-internal:hover,
+a.link-internal:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Visuaalinen vihje että sivu on klikattava */
+.cover-click {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cover-click:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+/* ===============================
+   KANSIKUVA – KOKO SIVU
+   =============================== */
+
+.cover-wrapper {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Kevyt teksti- ja kontrastikerros */
+.cover-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 3rem;
+
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.05),
+        rgba(0,0,0,0)
+    );
+}
+
+.cover-text {
+    background: rgba(255,255,255,0.85);
+    color: #1f5f7a;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0.8em 1.6em;
+    border-radius: 999px;
+}
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* ============================================================
    NAVIGOINTIPALKKI — SOTE-versio (TOIMIVA)
    ============================================================ */
@@ -910,40 +1050,44 @@ Tällä sivustolla voit tutkia, miten hyvin terveys- ja hyvinvointialat voisivat
 
   &lt;/div&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="4" name="Loppusivu" tags="" position="1200,600" size="100,100">
-&lt;div class=&quot;quiz-page&quot;&gt;
-  &lt;h1&gt;Hienoa työtä!&lt;/h1&gt;
-  &lt;hr&gt;
+</tw-passagedata><tw-passagedata pid="4" name="Loppusivu" tags="" position="1200,600" size="100,100">&lt;div class=&quot;quiz-page sote-wrapper&quot;&gt;
 
-  &lt;p&gt;
-    Olet jaksanut kulkea tämän [alan] tarinan loppuun asti. Se kertoo,
-    että sinulla on sinnikkyyttä, halua oppia uutta ja uskallusta pohtia
-    omaa tulevaisuuttasi – samoja taitoja, joita työelämässä arvostetaan.
-  &lt;/p&gt;
+  &lt;h1 class=&quot;sote-title&quot;&gt;Hienoa työtä!&lt;/h1&gt;
 
-  &lt;p&gt;
-    Työelämä tarvitsee monenlaisia osaajia: käytännön tekijöitä,
-    suunnittelijoita, ongelmanratkaisijoita ja tutkijoita. Jokaisella on
-    oma paikkansa – myös sinulla.
-  &lt;/p&gt;
+  &lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
 
-  &lt;p&gt;
-    Voit halutessasi palata tutkimaan eri ammatteja, katsoa ammattivideoita,
-    selata oppilaitosten sivuja tai aloittaa testin alusta ja nähdä,
-    herääkö uusia ajatuksia.
-  &lt;/p&gt;
+  &lt;div class=&quot;sote-content&quot;&gt;
+    &lt;p&gt;
+Olet kulkenut tämän terveys- ja hyvinvointialaan liittyvän kokonaisuuden loppuun asti. Se kertoo, että olet valmis pohtimaan itseäsi, omia vahvuuksiasi ja sitä, millainen työ voisi sopia sinulle.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+SOTE-alalla tarvitaan monenlaisia ihmisiä: kuuntelijoita, auttajia, tiimityön tekijöitä ja vastuunkantajia. Työ voi olla välillä vaativaa, mutta samalla hyvin merkityksellistä, koska sillä autetaan muita ihmisiä.
+    &lt;/p&gt;
+
+    &lt;p&gt; Voit halutessasi palata tekemään testejä uudelleen, tutustua eri  ammatteihin, katsoa videoita tai selata oppilaitosten sivuja. Jokainen pohdinta auttaa sinua ymmärtämään paremmin, mikä voisi sopia juuri sinulle.
+    &lt;/p&gt;
+  &lt;/div&gt;
 
   &lt;p class=&quot;highlight&quot; style=&quot;text-align:center; margin-top:2rem;&quot;&gt;
-    Uskalla tavoitella, oppia ja unelmoida – tulevaisuus on enemmän auki kuin koskaan.
+    Muista: sinun ei tarvitse vielä tietää kaikkea – kiinnostus ja halu oppia vievät jo pitkälle.
   &lt;/p&gt;
 
-  &lt;div class=&quot;intro-nappi&quot;&gt;
-    [[Palaa tarinan alkuun-&gt;Start]]
-    &lt;button class=&quot;exit-btn&quot; onclick=&quot;confirmExitStory()&quot;&gt;
-      Sulje esitys
-    &lt;/button&gt;
-  &lt;/div&gt;
+  &lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;feedback-actions&quot;&gt;
+  &lt;&lt;link &quot;Takaisin alkuun&quot; &quot;Start&quot;&gt;&gt;
+    &lt;span class=&quot;btn btn-secondary&quot;&gt;Palaa alkuun&lt;/span&gt;
+  &lt;&lt;/link&gt;&gt;
+
+  &lt;button class=&quot;btn btn-secondary&quot; onclick=&quot;confirmExitStory()&quot;&gt;
+    Poistu
+  &lt;/button&gt;
 &lt;/div&gt;
+
+
+&lt;/div&gt;
+
 </tw-passagedata><tw-passagedata pid="5" name="Johdanto" tags="" position="375,175" size="100,100">
 &lt;div class=&quot;sote-wrapper&quot;&gt;
 
@@ -975,107 +1119,126 @@ Tee testi ja katso, voisiko ala sopia sinulle.
 &lt;/div&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="6" name="Ammattitutkimus: lomake" tags="" position="1200,350" size="100,100">&lt;div class=&quot;quiz-page&quot;&gt;
-  &lt;h1&gt;Ammattitutkimus&lt;/h1&gt;
-  &lt;hr&gt;
+</tw-passagedata><tw-passagedata pid="6" name="Ammattitutkimus: lomake" tags="" position="1200,350" size="100,100">&lt;div class=&quot;quiz-page sote-wrapper&quot;&gt;
 
-  &lt;p&gt;
-    Valitse jokin [alan] ammatti, joka sinua kiinnostaa. Tutki sitä luotettavista
-    lähteistä (esim. Työmarkkinatori, Duunitori, oppilaitosten sivut).
-    Vastaa kysymyksiin mahdollisimman konkreettisesti.
+&lt;h1 class=&quot;sote-title&quot;&gt;Ammattitutkimus: SOTE-ala&lt;/h1&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;sote-content&quot;&gt;
+&lt;p&gt;
+Tässä tehtävässä tutkit tarkemmin yhtä terveys- ja hyvinvointialan ammattia. Tehtävä auttaa sinua ymmärtämään, millaista työ sote-alalla on ja voisiko kyseinen ammatti sopia juuri sinulle.
+&lt;/p&gt;
+&lt;p&gt;
+Valitse yksi sote-alan ammatti, joka sinua kiinnostaa. Se voi olla esimerkiksi &lt;strong&gt;lähihoitaja, sairaanhoitaja, ensihoitaja, lääkäri, fysioterapeutti&lt;/strong&gt; tai jokin muu alan ammatti.
+
+Etsi tietoa luotettavista lähteistä, kuten:
+&lt;ul&gt;
+  &lt;li&gt;oppilaitosten verkkosivut&lt;/li&gt;
+  &lt;li&gt;Työmarkkinatori&lt;/li&gt;
+  &lt;li&gt;Opintopolku (www.opintopolku.fi)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Vastaa kysymyksiin omin sanoin. Tässä tehtävässä ei ole oikeita tai vääriä vastauksia. Tärkeintä on, että pohdit asiaa rehellisesti.
+&lt;/p&gt;
+ &lt;div class=&quot;mini-tip&quot;&gt;
+    &lt;span class=&quot;mini-tip-text&quot;&gt;
+    Kirjoita rauhassa. Voit laajentaa tekstilaatikkoa vetämällä sen alareunasta.
+    &lt;/span&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+
+&lt;!-- 1 --&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+  &lt;label class=&quot;lomake-label&quot;&gt;1. Ammatin nimi&lt;/label&gt;
+  &lt;p class=&quot;lomake-ohje&quot;&gt;
+    Minkä terveys- ja hyvinvointialan ammatin valitsit tutkittavaksi?
   &lt;/p&gt;
+&lt;&lt;textarea &quot;$ammattiNimi&quot; &quot;&quot; 2&gt;&gt;
+&lt;/div&gt;
 
-  &lt;p&gt;
-    Lopuksi saat yhteenvedon vastauksistasi, jonka voit kopioida omaan
-    Google Docs -dokumenttiisi tai ladata vastaukset tekstitiedostona.
+&lt;!-- 2 --&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+  &lt;label class=&quot;lomake-label&quot;&gt;2. Mitä työssä tehdään?&lt;/label&gt;
+  &lt;p class=&quot;lomake-ohje&quot;&gt;
+    Kuvaile ammatin keskeisiä työtehtäviä.  Mitä työntekijä tekee tavallisena työpäivänä?
   &lt;/p&gt;
+&lt;&lt;textarea &quot;$KoulutusPolku&quot; &quot;&quot; 4&gt;&gt;
+&lt;/div&gt;
 
-  &lt;div class=&quot;lomake-ryhma&quot;&gt;
-    &lt;label class=&quot;lomake-label&quot;&gt;1. Ammatin nimi&lt;/label&gt;
-    &lt;p class=&quot;lomake-ohje&quot;&gt;
-      Mihin [alan] ammattiin tutustut tarkemmin?
-    &lt;/p&gt;
-     &lt;&lt;textbox &quot;$ammattiNimi&quot; &quot;&quot;&gt;&gt;
+&lt;!-- 3 --&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+  &lt;label class=&quot;lomake-label&quot;&gt;3. Työympäristö&lt;/label&gt;
+  &lt;p class=&quot;lomake-ohje&quot;&gt;
+    Missä tätä työtä tehdään?  (Esim. sairaala, hoivakoti, kotihoito, ambulanssi, vastaanotto.)
+  &lt;/p&gt;
+  &lt;&lt;textarea &quot;$tyotehtavat&quot; &quot;&quot; 6&gt;&gt;
+&lt;/div&gt;
 
-  &lt;/div&gt;
+&lt;!-- 4 --&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+  &lt;label class=&quot;lomake-label&quot;&gt;4. Koulutus ammattiin&lt;/label&gt;
+  &lt;p class=&quot;lomake-ohje&quot;&gt;
+    Millaista koulutusta ammatti vaatii?  Kerro koulutuspolku peruskoulun jälkeen.
+  &lt;/p&gt;
+ &lt;&lt;textarea &quot;$KoulutusPolku&quot; &quot;&quot; 4&gt;&gt;
+&lt;/div&gt;
 
-  &lt;div class=&quot;lomake-ryhma&quot;&gt;
-    &lt;label class=&quot;lomake-label&quot;&gt;2. Koulutuspolku ammattiin&lt;/label&gt;
-    &lt;p class=&quot;lomake-ohje&quot;&gt;
-      Kuvaile, millaisia koulutuspolkuja tähän ammattiin voi johtaa
-      (esim. peruskoulu → ammatillinen koulutus → työelämä → AMK).
-    &lt;/p&gt;
-    &lt;&lt;textbox &quot;$KoulutusPolku&quot; &quot;&quot;&gt;&gt;
+&lt;!-- 5 --&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+  &lt;label class=&quot;lomake-label&quot;&gt;5. Millaiselle ihmiselle ammatti sopii?&lt;/label&gt;
+  &lt;p class=&quot;lomake-ohje&quot;&gt;
+    Millaisia taitoja, luonteenpiirteitä tai vahvuuksia työssä tarvitaan? (Esim. auttamishalu, yhteistyötaidot, vastuullisuus.)
+  &lt;/p&gt;
+  &lt;&lt;textarea &quot;$vahvuudet&quot; &quot;&quot; 4&gt;&gt;
+&lt;/div&gt;
 
-  &lt;/div&gt;
+&lt;!-- 6 --&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+  &lt;label class=&quot;lomake-label&quot;&gt;6. Työn hyvät puolet&lt;/label&gt;
+  &lt;p class=&quot;lomake-ohje&quot;&gt;
+    Mitkä asiat tekevät työstä mielekästä tai palkitsevaa?
+  &lt;/p&gt;
+&lt;&lt;textarea &quot;$hyvatPuolet&quot; &quot;&quot; 4&gt;&gt;
+&lt;/div&gt;
 
-  &lt;div class=&quot;lomake-ryhma&quot;&gt;
-    &lt;label class=&quot;lomake-label&quot;&gt;3. Mitä työtehtäviä ammatissa tehdään?&lt;/label&gt;
-    &lt;p class=&quot;lomake-ohje&quot;&gt;
-      Kerro esimerkkejä työtehtävistä ja työn sisällöstä.
-    &lt;/p&gt;
-    &lt;&lt;textbox &quot;$tyotehtavat&quot; &quot;&quot;&gt;&gt;
+&lt;!-- 7 --&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+  &lt;label class=&quot;lomake-label&quot;&gt;7. Työn haasteet&lt;/label&gt;
+  &lt;p class=&quot;lomake-ohje&quot;&gt;
+    Mitkä asiat voivat olla työssä raskaita, haastavia tai kuormittavia?
+  &lt;/p&gt;
+&lt;&lt;textarea &quot;$haasteet&quot; &quot;&quot; 4&gt;&gt;
+&lt;/div&gt;
 
-  &lt;/div&gt;
+&lt;!-- 8 --&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+  &lt;label class=&quot;lomake-label&quot;&gt;8. Palkkaus ja työaika&lt;/label&gt;
+  &lt;p class=&quot;lomake-ohje&quot;&gt;
+    Millainen palkkataso ja työaika ammatissa on?  Jos et löydä tarkkaa tietoa, tee oma arvio.
+  &lt;/p&gt;
+  &lt;&lt;textarea &quot;$palkkaus&quot; &quot;&quot; 3&gt;&gt;
+&lt;/div&gt;
 
-  &lt;div class=&quot;lomake-ryhma&quot;&gt;
-    &lt;label class=&quot;lomake-label&quot;&gt;4. Missä työpaikoissa voi työskennellä?&lt;/label&gt;
-    &lt;p class=&quot;lomake-ohje&quot;&gt;
-      Millaisissa yrityksissä tai organisaatioissa tätä työtä tehdään?
-    &lt;/p&gt;
- &lt;&lt;textbox &quot;$tyopaikat&quot; &quot;&quot;&gt;&gt;
+&lt;!-- 9 --&gt;
+&lt;div class=&quot;lomake-ryhma&quot;&gt;
+  &lt;label class=&quot;lomake-label&quot;&gt;9. Oma pohdintasi&lt;/label&gt;
+  &lt;p class=&quot;lomake-ohje&quot;&gt;
+    Miksi tämä ammatti voisi sopia sinulle?  Tai miksi se ei ehkä ole sinulle sopivin vaihtoehto?
+  &lt;/p&gt;
+ &lt;&lt;textarea &quot;$yhteenvetoOmaNakyma&quot; &quot;&quot; 6&gt;&gt;
+&lt;/div&gt;
 
-  &lt;/div&gt;
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;start-actions&quot;&gt;
+  &lt;&lt;link &quot;Ammattitutkimus: yhteenveto&quot; &quot;Ammattitutkimus: yhteenveto&quot;&gt;&gt;
+    &lt;span class=&quot;btn btn-secondary&quot;&gt;Ammattitutkimus: yhteenveto&lt;/span&gt;
+  &lt;&lt;/link&gt;&gt;
 
-  &lt;div class=&quot;lomake-ryhma&quot;&gt;
-    &lt;label class=&quot;lomake-label&quot;&gt;5. Mitä vahvuuksia ammatissa tarvitaan?&lt;/label&gt;
-    &lt;p class=&quot;lomake-ohje&quot;&gt;
-      Esimerkiksi huolellisuus, käden taidot, vuorovaikutustaidot, kielitaito...
-    &lt;/p&gt;
-    &lt;&lt;textbox &quot;$vahvuudet&quot; &quot;&quot;&gt;&gt;
+&lt;/div&gt;
 
-  &lt;/div&gt;
-
-  &lt;div class=&quot;lomake-ryhma&quot;&gt;
-    &lt;label class=&quot;lomake-label&quot;&gt;6. Ammatin hyvät puolet&lt;/label&gt;
-    &lt;p class=&quot;lomake-ohje&quot;&gt;
-      Mitkä ovat ammatin parhaat puolet?
-    &lt;/p&gt;
-   &lt;&lt;textbox &quot;$hyvatPuolet&quot; &quot;&quot;&gt;&gt;
-
-  &lt;/div&gt;
-
-  &lt;div class=&quot;lomake-ryhma&quot;&gt;
-    &lt;label class=&quot;lomake-label&quot;&gt;7. Ammatin haasteet&lt;/label&gt;
-    &lt;p class=&quot;lomake-ohje&quot;&gt;
-      Mitkä asiat voivat olla vaativia tai kuormittavia tässä ammatissa?
-    &lt;/p&gt;
-     &lt;&lt;textbox &quot;$haasteet&quot; &quot;&quot;&gt;&gt;
-
-  &lt;/div&gt;
-
-  &lt;div class=&quot;lomake-ryhma&quot;&gt;
-    &lt;label class=&quot;lomake-label&quot;&gt;8. Palkkaus&lt;/label&gt;
-    &lt;p class=&quot;lomake-ohje&quot;&gt;
-      Selvitä mahdollisuuksien mukaan ammatin palkkatasoa tai kirjoita
-      lyhyt arvio palkkauksesta.
-    &lt;/p&gt;
-   &lt;&lt;textbox &quot;$palkkaus&quot; &quot;&quot;&gt;&gt;
-
-  &lt;/div&gt;
-
-  &lt;div class=&quot;lomake-ryhma&quot;&gt;
-    &lt;label class=&quot;lomake-label&quot;&gt;9. Oma yhteenvetosi&lt;/label&gt;
-    &lt;p class=&quot;lomake-ohje&quot;&gt;
-      Miksi tämä ammatti voisi sopia sinulle – tai miksi ei?
-    &lt;/p&gt;
-     &lt;&lt;textbox &quot;$yhteenvetoOmaNakyma&quot; &quot;&quot;&gt;&gt;
-
-  &lt;/div&gt;
-
-  &lt;div class=&quot;intro-nappi&quot; style=&quot;margin-top:1.5rem;&quot;&gt;
-    [[Näytä yhteenveto vastauksista-&gt;Ammattitutkimus: yhteenveto]]
-  &lt;/div&gt;
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="7" name="Oppilaitokset" tags="" position="950,100" size="100,100">&lt;div class=&quot;sote-wrapper quiz-start-card&quot;&gt;
 
@@ -1083,75 +1246,97 @@ Tee testi ja katso, voisiko ala sopia sinulle.
 
 &lt;div class=&quot;sote-content&quot;&gt;
 &lt;p&gt;
-SOTE-alalle voi kouluttautua monella eri tavalla. Koulutuspolku riippuu siitä, minkälaista työtä haluat tehdä ja kuinka pitkälle haluat opiskella.
+SOTE-alalle voi kouluttautua monella eri tavalla. Koulutuspolku riippuu siitä,
+minkälaista työtä haluat tehdä ja kuinka pitkälle haluat opiskella.
 &lt;/p&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;start-actions&quot;&gt;
 
-&lt;&lt;link &quot;Ammattikoulu&quot; &quot;Toinen aste&quot;&gt;&gt;
+&lt;&lt;link &quot;Toinen aste&quot; &quot;Toinen aste&quot;&gt;&gt;
   &lt;span class=&quot;btn btn-primary&quot;&gt;Toinen aste&lt;/span&gt;
 &lt;&lt;/link&gt;&gt;
 
-&lt;&lt;link &quot;Ammattikorkeakoulut&quot;&quot;Ammattikorkeakoulut&quot;&gt;&gt;
-  &lt;span class=&quot;btn btn-secondary&quot;&gt;AMK&lt;/span&gt;
+&lt;&lt;link &quot;Ammattikorkeakoulut&quot; &quot;Ammattikorkeakoulut&quot;&gt;&gt;
+  &lt;span class=&quot;btn btn-primary&quot;&gt;AMK&lt;/span&gt;
 &lt;&lt;/link&gt;&gt;
 
 &lt;&lt;link &quot;Yliopistot&quot; &quot;Yliopistot&quot;&gt;&gt;
-  &lt;span class=&quot;btn btn-secondary&quot;&gt;Yliopisto&lt;/span&gt;
+  &lt;span class=&quot;btn btn-primary&quot;&gt;Yliopisto&lt;/span&gt;
 &lt;&lt;/link&gt;&gt;
 
+&lt;/div&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+
+&lt;div class=&quot;start-actions&quot;&gt;
+
+&lt;&lt;link &quot;Ammattitutkimustehtävä&quot; &quot;Ammattitutkimus: lomake&quot;&gt;&gt;
+  &lt;span class=&quot;btn btn-primary&quot;&gt;Ammattitutkimus&lt;/span&gt;
+&lt;&lt;/link&gt;&gt;
 
 &lt;/div&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="8" name="Ammattitutkimus: yhteenveto" tags="" position="1200,475" size="100,100">:: Ammattitutkimus: yhteenveto
-&lt;div class=&quot;quiz-page&quot;&gt;
-  &lt;h1&gt;Ammattitutkimuksen yhteenveto&lt;/h1&gt;
-  &lt;hr&gt;
+</tw-passagedata><tw-passagedata pid="8" name="Ammattitutkimus: yhteenveto" tags="" position="1200,475" size="100,100">&lt;div class=&quot;sote-wrapper notebook&quot;&gt;
 
-  &lt;p&gt;
-    Alla on yhteenveto vastauksistasi. Voit kopioida tekstin omaan
-    Google Docs -dokumenttiin tai ladata vastaukset tekstitiedostona.
-  &lt;/p&gt;
+&lt;h2 class=&quot;sote-title&quot;&gt;Ammattitutkimus – Yhteenveto&lt;/h2&gt;
 
-  &lt;h2&gt;Valittu ammatti&lt;/h2&gt;
-  &lt;p&gt;&lt;strong&gt;Ammatti:&lt;/strong&gt; &lt;&lt;print $ammattiNimi&gt;&gt;&lt;/p&gt;
+&lt;p class=&quot;notebook-intro&quot;&gt;
+Alla on yhteenveto vastauksistasi. Voit vielä tarkistaa tekstit ja kopioida ne esimerkiksi Google Docs -dokumenttiin.
+&lt;/p&gt;
 
-  &lt;h2&gt;Koulutuspolku ammattiin&lt;/h2&gt;
-  &lt;p&gt;&lt;&lt;print $koulutusPolku&gt;&gt;&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+&lt;h3&gt;Ammatin nimi&lt;/h3&gt;
+&lt;p&gt;&lt;&lt;print $ammattiNimi&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;h2&gt;Työtehtävät&lt;/h2&gt;
-  &lt;p&gt;&lt;&lt;print $tyotehtavat&gt;&gt;&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+&lt;h3&gt;Koulutuspolku ammattiin&lt;/h3&gt;
+&lt;p&gt;&lt;&lt;print $KoulutusPolku&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;h2&gt;Mahdolliset työpaikat&lt;/h2&gt;
-  &lt;p&gt;&lt;&lt;print $tyopaikat&gt;&gt;&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+&lt;h3&gt;Työtehtävät&lt;/h3&gt;
+&lt;p&gt;&lt;&lt;print $tyotehtavat&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;h2&gt;Ammatin vaatimat vahvuudet&lt;/h2&gt;
-  &lt;p&gt;&lt;&lt;print $vahvuudet&gt;&gt;&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+&lt;h3&gt;Mahdolliset työpaikat&lt;/h3&gt;
+&lt;p&gt;&lt;&lt;print $tyopaikat&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;h2&gt;Hyvät puolet&lt;/h2&gt;
-  &lt;p&gt;&lt;&lt;print $hyvatPuolet&gt;&gt;&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+&lt;h3&gt;Ammatissa tarvittavat vahvuudet&lt;/h3&gt;
+&lt;p&gt;&lt;&lt;print $vahvuudet&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;h2&gt;Haasteet&lt;/h2&gt;
-  &lt;p&gt;&lt;&lt;print $haasteet&gt;&gt;&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+&lt;h3&gt;Ammatin hyvät puolet&lt;/h3&gt;
+&lt;p&gt;&lt;&lt;print $hyvatPuolet&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;h2&gt;Palkkaus&lt;/h2&gt;
-  &lt;p&gt;&lt;&lt;print $palkkaus&gt;&gt;&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+&lt;h3&gt;Ammatin haasteet&lt;/h3&gt;
+&lt;p&gt;&lt;&lt;print $haasteet&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;h2&gt;Oma yhteenvetosi&lt;/h2&gt;
-  &lt;p&gt;&lt;&lt;print $yhteenvetoOmaNakyma&gt;&gt;&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+&lt;h3&gt;Palkkaus&lt;/h3&gt;
+&lt;p&gt;&lt;&lt;print $palkkaus&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;div class=&quot;intro-nappi&quot;&gt;
-    &lt;button class=&quot;exit-btn&quot; onclick=&quot;downloadAmmattitutkimus()&quot;&gt;
-      Lataa vastaukset tiedostona
-    &lt;/button&gt;
-  &lt;/div&gt;
+&lt;div class=&quot;note&quot;&gt;
+&lt;h3&gt;Oma yhteenvetoni&lt;/h3&gt;
+&lt;p&gt;&lt;&lt;print $yhteenvetoOmaNakyma&gt;&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;div class=&quot;intro-nappi&quot;&gt;
-    [[Palaa muokkaamaan vastauksia-&gt;Ammattitutkimus: lomake]]
-    [[Palaa alkuun-&gt;Start]]
-  &lt;/div&gt;
+&lt;div class=&quot;feedback-actions&quot;&gt;
+&lt;&lt;link &quot;Takaisin alkuun&quot; &quot;Ammattitestit&quot;&gt;&gt;
+&lt;span class=&quot;btn btn-secondary&quot;&gt;Takaisin alkuun&lt;/span&gt;
+&lt;&lt;/link&gt;&gt;
+&lt;/div&gt;
+
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="9" name="StoryHeader" tags="" position="775,0" size="100,100">&lt;div class=&quot;navbar-fixed&quot;&gt;
   &lt;&lt;button &quot;← Taaksepäin&quot;&gt;&gt;
@@ -1248,9 +1433,14 @@ Se ei ole huono asia – kaikki alat eivät sovi kaikille.
 &lt;&lt;/if&gt;&gt;
 
 &lt;div class=&quot;feedback-actions&quot;&gt;
-  &lt;&lt;link &quot;Ammattitestit&quot; &quot;Ammattitestit&quot;&gt;&gt;
+  &lt;&lt;link &quot;Sopiiko tämä ammatti sinulle - Testaa!&quot; &quot;Ammattitestit&quot;&gt;&gt;
     &lt;span class=&quot;btn btn-ghost&quot;&gt;Takaisin testeihin&lt;/span&gt;
   &lt;&lt;/link&gt;&gt;
+  &lt;&lt;link &quot;Jatka koulutussivulle&quot; &quot;Oppilaitokset&quot;&gt;&gt;
+  &lt;span class=&quot;btn btn-secondary&quot;&gt;Oppilaitokset&lt;/span&gt;
+&lt;&lt;/link&gt;&gt;
+
+
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1904,9 +2094,13 @@ On täysin ok, että tämä ala ei tunnu omalta. Tärkeintä on löytää itsell
 &lt;/div&gt;
 
 &lt;div style=&quot;text-align:center; margin-top:2em;&quot;&gt;
-&lt;&lt;link &quot;Tutustu alan oppilaitoksiin&quot; &quot;Oppilaitokset&quot;&gt;&gt;
+&lt;&lt;link &quot;Jatka koulutussivulle&quot; &quot;Oppilaitokset&quot;&gt;&gt;
   &lt;span class=&quot;btn btn-secondary&quot;&gt;Oppilaitokset&lt;/span&gt;
 &lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;Tee toinen testi&quot; &quot;Ammattitestit&quot;&gt;&gt;
+  &lt;span class=&quot;btn btn-secondary&quot;&gt;Ammattitestit&lt;/span&gt;
+&lt;&lt;/link&gt;&gt;
+
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -2106,8 +2300,11 @@ On täysin ok, jos tämä ala ei tunnu omalta. Muita terveysalan ammatteja kanna
 
 &lt;div style=&quot;text-align:center; margin-top:2em;&quot;&gt;
 
-&lt;&lt;link &quot;Tutustu alan oppilaitoksiin&quot; &quot;Oppilaitokset&quot;&gt;&gt;
+&lt;&lt;link &quot;Jatka koulutussivulle&quot; &quot;Oppilaitokset&quot;&gt;&gt;
   &lt;span class=&quot;btn btn-secondary&quot;&gt;Oppilaitokset&lt;/span&gt;
+&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;Tee toinen testi&quot; &quot;Ammattitestit&quot;&gt;&gt;
+  &lt;span class=&quot;btn btn-secondary&quot;&gt;Ammattitestit&lt;/span&gt;
 &lt;&lt;/link&gt;&gt;
 
 
@@ -2275,9 +2472,13 @@ Saatat viihtyä paremmin toisenlaisissa sote-alan tehtävissä.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div style=&quot;text-align:center; margin-top:2em;&quot;&gt;
 
-&lt;&lt;link &quot;Tutustu alan oppilaitoksiin&quot; &quot;Oppilaitokset&quot;&gt;&gt;
+&lt;&lt;link &quot;Jatka koulutussivulle&quot; &quot;Oppilaitokset&quot;&gt;&gt;
   &lt;span class=&quot;btn btn-secondary&quot;&gt;Oppilaitokset&lt;/span&gt;
 &lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;Tee toinen testi&quot; &quot;Ammattitestit&quot;&gt;&gt;
+  &lt;span class=&quot;btn btn-secondary&quot;&gt;Ammattitestit&lt;/span&gt;
+&lt;&lt;/link&gt;&gt;
+
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2401,8 +2602,15 @@ Vastuunotto kehittyy kokemuksen ja koulutuksen myö
     &lt;/div&gt;
   &lt;/div&gt;
    
-      
-</tw-passagedata><tw-passagedata pid="73" name="Ammattikorkeakoulut" tags="" position="950,225" size="100,100">&lt;div class=&quot;mini-tip&quot;&gt;
+ &lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;  
+&lt;div class=&quot;start-actions&quot;&gt;
+
+&lt;&lt;link &quot;Tehtävään&quot; &quot;Ammattitutkimus: lomake&quot;&gt;&gt;
+  &lt;span class=&quot;btn btn-primary&quot;&gt;Ammattitutkimus: lomake&lt;/span&gt;
+&lt;&lt;/link&gt;&gt;
+
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="73" name="Ammattikorkeakoulut" tags="" position="950,225" size="100,100">&lt;div class=&quot;mini-tip&quot;&gt;
   &lt;span class=&quot;mini-tip-text&quot;&gt;
     &lt;strong&gt; Huom! &lt;/strong&gt; Nämä ovat esimerkkejä – ajantasaiset tiedot löydät Opintopolusta.
   &lt;/span&gt;
@@ -2462,7 +2670,15 @@ Vastuunotto kehittyy kokemuksen ja koulutuksen myö
   &lt;/div&gt;
 
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="74" name="Yliopisto" tags="" position="1075,225" size="100,100">&lt;div class=&quot;mini-tip&quot;&gt;
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;start-actions&quot;&gt;
+
+&lt;&lt;link &quot;Tehtävään&quot; &quot;Ammattitutkimus: lomake&quot;&gt;&gt;
+  &lt;span class=&quot;btn btn-primary&quot;&gt;Ammattitutkimus: lomake&lt;/span&gt;
+&lt;&lt;/link&gt;&gt;
+
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="74" name="Yliopisto" tags="" position="1075,225" size="100,100">&lt;div class=&quot;mini-tip&quot;&gt;
   &lt;span class=&quot;mini-tip-text&quot;&gt;
   &lt;strong&gt; Huom! &lt;/strong&gt; Nämä ovat esimerkkejä – ajantasaiset tiedot löydät Opintopolusta.
   &lt;/span&gt;
@@ -2522,6 +2738,30 @@ Vastuunotto kehittyy kokemuksen ja koulutuksen myö
   &lt;/div&gt;
 
 &lt;/div&gt;
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;start-actions&quot;&gt;
+
+&lt;&lt;link &quot;Tehtävään&quot; &quot;Ammattitutkimus: lomake&quot;&gt;&gt;
+  &lt;span class=&quot;btn btn-primary&quot;&gt;Ammattitutkimus: lomake&lt;/span&gt;
+&lt;&lt;/link&gt;&gt;
+
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="75" name="Cover" tags="" position="425,25" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;link &quot;Aloita&quot; &quot;Start&quot;&gt;&gt;
+&lt;div class=&quot;cover-wrapper&quot;&gt;
+  &lt;img 
+    src=&quot;sote_kansikuva.png&quot; 
+    alt=&quot;Terveys- ja hyvinvointialat – kansikuva&quot;
+    class=&quot;cover-image&quot;
+  &gt;
+  &lt;div class=&quot;cover-overlay&quot;&gt;
+    &lt;span class=&quot;cover-text&quot;&gt;
+      Klikkaa ja aloita
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;&lt;/link&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;
 </tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
