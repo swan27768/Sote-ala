@@ -817,6 +817,35 @@ a.link-internal:visited {
     padding: 0.8em 1.6em;
     border-radius: 999px;
 }
+/* ===============================
+   KANSIKUVA – EI NAVBARIA
+   =============================== */
+
+/* Piilotetaan navbar vain kansikuvassa */
+.no-navbar .navbar-fixed {
+    display: none !important;
+}
+
+/* Kansikuvan koko sivun täyttävä layout */
+.cover-page {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cover-link {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 0px);
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* ============================================================
    NAVIGOINTIPALKKI — SOTE-versio (TOIMIVA)
    ============================================================ */
@@ -2746,22 +2775,19 @@ Vastuunotto kehittyy kokemuksen ja koulutuksen myö
 &lt;&lt;/link&gt;&gt;
 
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="75" name="Cover" tags="" position="425,25" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="75" name="Cover" tags="" position="425,25" size="100,100">&lt;div class=&quot;no-navbar cover-page&quot;&gt;
+
 &lt;&lt;link &quot;Aloita&quot; &quot;Start&quot;&gt;&gt;
-&lt;div class=&quot;cover-wrapper&quot;&gt;
-  &lt;img 
-    src=&quot;sote_kansikuva.png&quot; 
-    alt=&quot;Terveys- ja hyvinvointialat – kansikuva&quot;
-    class=&quot;cover-image&quot;
-  &gt;
-  &lt;div class=&quot;cover-overlay&quot;&gt;
-    &lt;span class=&quot;cover-text&quot;&gt;
-      Klikkaa ja aloita
-    &lt;/span&gt;
+  &lt;div class=&quot;cover-link&quot;&gt;
+    &lt;img 
+      src=&quot;https://raw.githubusercontent.com/swan27768/Sote-ala/main/sote_kansikuva.png&quot; 
+      alt=&quot;Terveys- ja hyvinvointialat&quot;
+      class=&quot;cover-image&quot;
+    &gt;
   &lt;/div&gt;
-&lt;/div&gt;
 &lt;&lt;/link&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;
+
+&lt;/div&gt;
 </tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
