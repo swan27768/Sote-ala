@@ -772,80 +772,111 @@ a.link-internal:visited {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
-/* ===============================
-   KANSIKUVA – KOKO SIVU
-   =============================== */
+/* ============================================================
+   KANSISIVU – TAUSTAKUVA VARMALLA TAVALLA
+   ============================================================ */
 
-.cover-wrapper {
+.cover-page {
     position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
+
+    background-color: #e8f3f4;
+    background-image: url("https://raw.githubusercontent.com/swan27768/Sote-ala/main/sote_kansikuva.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
     cursor: pointer;
-    overflow: hidden;
+    z-index: 9999;
 }
 
-.cover-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Kevyt teksti- ja kontrastikerros */
-.cover-overlay {
+/* Ohjeteksti */
+.cover-instruction {
     position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 3rem;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
 
-    background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.35),
-        rgba(0,0,0,0.05),
-        rgba(0,0,0,0)
-    );
-}
-
-.cover-text {
     background: rgba(255,255,255,0.85);
-    color: #1f5f7a;
-    font-size: 1.2rem;
-    font-weight: 700;
+    backdrop-filter: blur(8px);
+
     padding: 0.8em 1.6em;
     border-radius: 999px;
+
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #1f5f7a;
+    text-align: center;
+}
+
+/* Piilotetaan navbar kansisivulla */
+.cover-page .navbar-fixed {
+    display: none !important;
 }
 /* ===============================
-   KANSIKUVA – EI NAVBARIA
+   KANSI – KOKO SIVU
    =============================== */
 
-/* Piilotetaan navbar vain kansikuvassa */
-.no-navbar .navbar-fixed {
+/* Aktiivinen kansitila */
+body.cover-active {
+    background-color: #e8f3f4;
+}
+
+/* Piilotetaan navbar vain kansisivulla */
+body.cover-active #ui-bar {
     display: none !important;
 }
 
-/* Kansikuvan koko sivun täyttävä layout */
+/* Poistetaan Twinen sisällön taustat */
+body.cover-active #story,
+body.cover-active #passages {
+    background: transparent !important;
+}
+
+/* ===============================
+   KANSIPASSAGEN RAKENNE
+   =============================== */
+
 .cover-page {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
 }
 
-.cover-link {
-    display: block;
-    width: 100%;
-    height: calc(100vh - 0px);
+/* Iso otsikko */
+.cover-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1f5f7a;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-.cover-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+/* Klikkausohje */
+.cover-instruction {
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(255,255,255,0.85);
+    color: #1f2d3d;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    padding: 0.8em 1.6em;
+    border-radius: 999px;
 }
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* ============================================================
    NAVIGOINTIPALKKI — SOTE-versio (TOIMIVA)
    ============================================================ */
@@ -994,7 +1025,7 @@ window.confirmExitStory = function () {
 };
 
 
-</script><tw-passagedata pid="1" name="Start" tags="" position="525,50" size="100,100">&lt;div class=&quot;sote-wrapper quiz-start-card&quot;&gt;
+</script><tw-passagedata pid="1" name="Start" tags="" position="525,25" size="100,100">&lt;div class=&quot;sote-wrapper quiz-start-card&quot;&gt;
 
 &lt;h1 class=&quot;sote-title&quot;&gt;Terveys- ja hyvinvointialat&lt;/h1&gt;
 
@@ -2775,19 +2806,20 @@ Vastuunotto kehittyy kokemuksen ja koulutuksen myö
 &lt;&lt;/link&gt;&gt;
 
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="75" name="Cover" tags="" position="425,25" size="100,100">&lt;div class=&quot;no-navbar cover-page&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="75" name="Kansi" tags="" position="425,25" size="100,100">&lt;div class=&quot;cover-page&quot; role=&quot;button&quot; tabindex=&quot;0&quot;&gt;
 
-&lt;&lt;link &quot;Aloita&quot; &quot;Start&quot;&gt;&gt;
-  &lt;div class=&quot;cover-link&quot;&gt;
-    &lt;img 
-      src=&quot;https://raw.githubusercontent.com/swan27768/Sote-ala/main/sote_kansikuva.png&quot; 
-      alt=&quot;Terveys- ja hyvinvointialat&quot;
-      class=&quot;cover-image&quot;
-    &gt;
-  &lt;/div&gt;
-&lt;&lt;/link&gt;&gt;
+    &lt;h1 class=&quot;cover-title&quot;&gt;
+        Kauppa ja hallinto
+    &lt;/h1&gt;
 
+    
 &lt;/div&gt;
+
+&lt;&lt;script&gt;&gt;
+$(document).one(&#39;click keypress&#39;, function () {
+    Engine.play(&quot;Start&quot;);
+});
+&lt;&lt;/script&gt;&gt;
 </tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
